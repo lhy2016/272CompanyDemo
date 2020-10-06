@@ -1,0 +1,9 @@
+<div class="cic">
+                <a class="footer-link pl10" target="_back" href="#">Company website</a>
+                <a href="#" target="_blank">Join Us</a>
+                <a href="#">Service Agreement</a>
+                <a href="#" style="border: none">Privacy Agreement</a>
+            </div>
+            <p class="address">Company Name: Webify Inc.</p>
+            <p class="address">Company Phone: 000-000-0000</p>
+            <p class="address">Company Address: 12345 Nowhere Blvd, San Jose, CA 95014</p>

@@ -1,0 +1,36 @@
+#slogan {
+    position: absolute;
+    top:40px; 
+    left:50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #6d6f76;
+}
+#slogan-main {
+    font-size: 2.2vw;
+}
+#sub-slogan {
+    margin-top:15px;
+    font-size: 1.1vw;
+}
+.about img {
+    width: 430px;
+}
+.news-date {
+    color: #6d6f76;
+    margin-bottom: 15px;
+}
+.news-heading {
+    margin-top:10px;
+}
+#navbarSupportedContent {
+    justify-content: space-between;
+}
+.contact-content {
+    width: 75%;
+    min-width: 600px;
+    margin: 0px auto;
+    padding-left: 50px;
+    padding-right: 50px;
+    min-height: 500px;
+}
