@@ -216,5 +216,12 @@ $('.masker').on('click', function(e) {
     $('#navbarSupportedContent').toggleClass('show');
 })
 </script>
-
+<?php 
+    if(isset($_SESSION['error'])) {
+        $error = $_SESSION['error'];
+        echo "<script>
+            $('#admin-login-btn').click();
+        </script>";
+    }
+?>
 </html>

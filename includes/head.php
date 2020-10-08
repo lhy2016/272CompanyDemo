@@ -1,6 +1,13 @@
+<?php
+    if(isset($_GET['sid'])) {
+        session_id($_GET['sid']);
+    }
+    if(session_status() != 2) {
+        session_start();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <!-- Required meta tags -->
@@ -32,7 +39,16 @@
 
 
     <link rel="stylesheet" href="<?php echo $basePath; ?>css/index.css?v=1572311855">
-
+    <script> 
+        function handleUsersLink(event, loggedUser, basePath) {
+            event.preventDefault();
+            if (loggedUser == 'null') {
+                $("#admin-login-btn").click();
+            } else {
+                window.location.href= basePath+"users.php";
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -55,20 +71,38 @@
                                 <a class="nav-link" href="<?php echo $basePath; ?>">Home</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#about">About</a>
+                                <a class="nav-link" href="<?php echo $basePath; ?>#about">About</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#product">Products</a>
+                                <a class="nav-link" href="<?php echo $basePath; ?>#product">Products</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#news">News</a>
+                                <a class="nav-link" href="<?php echo $basePath; ?>#news">News</a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="<?php echo $basePath; ?>contacts.php">Contact Us</a>
                             </li>
+                            <li class="nav-item " onclick="handleUsersLink(event, 
+                                <?php if(isset($_SESSION['logged_User'])): ?>
+                                    '<?php echo $_SESSION['logged_User']; ?>'
+                                <?php else: ?>
+                                    'null'
+                                <?php endif; ?>
+                                ,'<?php echo $basePath ?>')">
+                                <a id="nav-users-link" class="nav-link" href="<?php echo $basePath; ?>users.php">Users</a>
+                            </li>
                         </ul>
+                        <?php if(!isset($_SESSION['logged_User'])): ?>
                         <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#admin-login-modal">Admin Login</button>
+                            data-target="#admin-login-modal" id="admin-login-btn">Admin Login</button>
+                        <?php else:?>
+                        <div style="display:flex;align-items:center;">
+                            Welcome, <?php echo $_SESSION['logged_User']; ?>
+                            <form action="logout.php" method="POST" style="margin-left:10px;">
+                                <input class="btn btn-secondary" type="submit" name="logout" value="Logout">
+                            </form>
+                        </div>
+                        <?php endif;?>
                 </nav>
                 <div class="modal fade" id="admin-login-modal" tabindex="-1" role="dialog"
                     aria-labelledby="myModalLabel" aria-hidden="true">
@@ -86,11 +120,18 @@
                                 <form role="form" method="POST" action="login.php">
                                     <div class="form-group">
                                         <label for="username">Username</label>
-                                        <input type="text" class="form-control" id="username" name="username" placeholder="Please enter username">
+                                        <input type="text" class="form-control" id="username" name="username"
+                                            placeholder="Please enter username">
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Password</label>
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Please enter password">
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            placeholder="Please enter password">
+                                    </div>
+                                    <div id="login-form-err-msg" style="color: red;">
+                                    <?php if(isset($_SESSION['error'])): ?>
+                                        <?php  echo $_SESSION['error']; ?>
+                                    <?php endif; ?>
                                     </div>
                                     <input type="submit" class="btn btn-primary" name="login-submit" value="Submit">
                                 </form>
