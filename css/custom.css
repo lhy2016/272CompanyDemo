@@ -34,3 +34,14 @@
     padding-right: 50px;
     min-height: 500px;
 }
+#login-modal-header {
+    justify-content: space-between;
+    align-items: center;
+}
+#login-modal-content {
+    margin-top: 120px;
+}
+#admin-login-modal {
+    width: 400px;
+    margin: auto;
+}   

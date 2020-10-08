@@ -1,5 +1,6 @@
 <?php require_once 'conf.php';?>
 <?php include 'includes/head.php';?>
+
 <div class="swiper-container pc">
     <div class="swiper-wrapper">
         <div class="swiper-slide" style="position: relative;">
