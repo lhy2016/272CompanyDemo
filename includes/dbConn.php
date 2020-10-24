@@ -31,6 +31,7 @@ function mysqlinstalled (){
    }
 
 $conn = new mysqli($servername,$username,$password,$db_name);
+print_r($conn);
 if ($conn->connect_error) {
     echo($conn->connect_error);
     die("Connection failed: " . $conn->connect_error);
