@@ -3,7 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $db_name = "company";
- 
+phpinfo();
 function mysqlinstalled (){
     if (function_exists ("mysql_connect")){
      return true;
