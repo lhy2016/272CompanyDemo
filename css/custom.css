@@ -45,3 +45,18 @@
     width: 400px;
     margin: auto;
 }   
+#addUser {
+    position: fixed;
+    top: 15%;
+}
+#searchUser {
+    position: fixed;
+    top: 15%;
+}
+#clear-search {
+    background-color:#d05e3a;
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 10px 15px;
+    border-radius: 5px;
+}

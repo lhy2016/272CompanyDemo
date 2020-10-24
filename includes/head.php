@@ -1,3 +1,4 @@
+<?php require("dbConn.php");?>
 <?php
     if(isset($_GET['sid'])) {
         session_id($_GET['sid']);
@@ -89,7 +90,10 @@
                                     'null'
                                 <?php endif; ?>
                                 ,'<?php echo $basePath ?>')">
-                                <a id="nav-users-link" class="nav-link" href="<?php echo $basePath; ?>users.php">Users</a>
+                                <a id="nav-users-link" class="nav-link" href="<?php echo $basePath; ?>users.php">Secure</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="<?php echo $basePath; ?>site_users.php">Users</a>
                             </li>
                         </ul>
                         <?php if(!isset($_SESSION['logged_User'])): ?>
