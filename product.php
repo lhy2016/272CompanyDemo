@@ -35,6 +35,31 @@
         setcookie("recent",$initRecentJson, $expire);
     }
 ?>
+<?php 
+    if(isset($_COOKIE['most'])) {
+        $mostJson = $_COOKIE['most'];
+        $most = json_decode($mostJson, TRUE);
+        if(isset($most[("id:".$_GET["id"])])) {
+            $most[("id:".$_GET["id"])] = ($most[("id:".$_GET["id"])] + 1);
+        } else {
+            $most[("id:".$_GET["id"])] = 1; 
+        }
+        $temp = array();
+        
+        array_multisort($most, SORT_DESC, $most);
+        $expire = time()+60*60*24*30;
+        $mostJson = json_encode($most);
+        setcookie("most", $mostJson, $expire);
+
+    } else {
+        $expire = time()+60*60*24*30;
+        date_default_timezone_set("America/Los_Angeles");
+        
+        $initMost = array(("id:".$_GET["id"])=>1);
+        $initMostJson = json_encode($initMost);
+        setcookie("most", $initMostJson, $expire);
+    }
+?>
 <?php include 'includes/head.php';?>
 
 <div class="jumbotron contact-content">

@@ -47,6 +47,9 @@
                     <?php endfor; ?>
                 </div>
                 <a href="recentViewed.php" style="margin:0px auto;position:relative;top:-20px;">Your recently viewed products</a>
+                <div>
+                    <a href="mostViewed.php" style="margin:0px auto;position:relative;top:-20px;">Your mostly viewed products</a>
+                </div> 
             </div>
             <div id="product-prev" class="prev"><img src="images/icon_left.png" alt=""></div>
             <div id="product-next" class="next"><img src="images/icon_right.png" alt=""></div>
