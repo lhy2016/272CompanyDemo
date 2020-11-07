@@ -6,7 +6,6 @@
 <?php 
     $userResult = getUser($conn);
 ?>
-<?php phpinfo(); ?>
 <div class="jumbotron contact-content">
     <?php if(count($_GET) > 0): ?>
     <?php 
