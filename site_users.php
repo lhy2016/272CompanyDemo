@@ -152,6 +152,41 @@
             
         </tbody>
     </table>
+    <h3>jiu Bar's Site Users: <span style="font-size:14px;"><a href="https://runchen-tao.herokuapp.com/"> visit here </a></span></h3>
+    <?php 
+    $headerArray =array("Content-type:application/json;","Accept:application/json");
+    $curl = curl_init();
+    $url = "https://runchen-tao.herokuapp.com/api.php";
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl,CURLOPT_HTTPHEADER,$headerArray);
+    $output = curl_exec($curl);
+    curl_close($curl);
+    $resultObj = json_decode($output,true);
+    ?>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Home Address</th>
+                <th>Home Phone</th>
+                <th>Cell Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($resultObj as $result): ?>
+                <tr>
+                    <?php foreach($result as $name=>$value):?>
+                        <?php if($name !== "id"): ?>
+                            <td><?php echo $value;?></td>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
 </div>
 <script>
 $("#add-submit").click(function() {
