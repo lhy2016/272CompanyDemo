@@ -189,6 +189,7 @@
     </table>
 </div>
 <script>
+<?php phpinfo(); ?>
 $("#add-submit").click(function() {
     $("#addUser-submit").click();
 });
